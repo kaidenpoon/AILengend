@@ -11,10 +11,12 @@ struct Home: View {
     let fullScreen = UIScreen.main.bounds.size
     let singleImgWidth = (UIScreen.main.bounds.size.width - 32 - 30) / 4
     let gutter = 10
+    let imgArr = ["img1","img2","img3","img4","img5","img6","img7","img8","img9","img10","img11","img12","img13","img14","img15","img16","img17","img18","img19","img20"]
     
     @State var isDone:Bool = false
-    @State var isSearch:Bool = true
+    @State var isSearch:Bool = false
     @State var text:String = ""
+    
     var body: some View {
         ZStack(alignment:.bottom) {
             VStack{
@@ -69,7 +71,7 @@ struct Home: View {
                         VStack(spacing:10){
                             Group {
                                 // top
-                                Image("img1")
+                                Image(returnStr())
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: (singleImgWidth * 2) + 10,height: singleImgWidth )
@@ -77,11 +79,11 @@ struct Home: View {
                                 // middle
                                 HStack {
                                     Group {
-                                        Image("img2")
+                                        Image(returnStr())
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                         
-                                        Image("img4")
+                                        Image(returnStr())
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                     }
@@ -89,7 +91,7 @@ struct Home: View {
                                 }
                                 
                                 // bottom
-                                Image("img3")
+                                Image(returnStr())
                             }
                             .cornerRadius(8)
                             
@@ -102,11 +104,11 @@ struct Home: View {
                                 // top
                                 HStack {
                                     Group {
-                                        Image("img5")
+                                        Image(returnStr())
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                         
-                                        Image("img6")
+                                        Image(returnStr())
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
                                     }
@@ -114,11 +116,11 @@ struct Home: View {
                                 }
                                 
                                 // middle
-                                Image("img7")
+                                Image(returnStr())
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                 
-                                Image("img8")
+                                Image(returnStr())
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: (singleImgWidth * 2) + 10,height: singleImgWidth )
@@ -211,6 +213,10 @@ struct Home: View {
         }
         .ignoresSafeArea()
         
+    }
+    
+    func returnStr() -> String{
+        imgArr.randomElement() ?? "img"
     }
 }
 
